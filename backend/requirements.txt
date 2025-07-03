@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+typing_extensions
+langchain
+openai
+python-dotenv 
