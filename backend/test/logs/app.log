@@ -1,0 +1,517 @@
+2025-07-11 11:35:39,433 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'gpt-4o' using create_structured_chat_agent...
+2025-07-11 11:35:39,433 - llm_agent_platform - ERROR - agent_manager.py:56 - Failed to get or validate LLM 'gpt-4o' for agent 'general_web_search_agent': LLM model 'gpt-4o' is not configured in settings.
+2025-07-11 11:37:00,356 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'Deepseek' using create_structured_chat_agent...
+2025-07-11 11:37:00,356 - llm_agent_platform - ERROR - agent_manager.py:56 - Failed to get or validate LLM 'Deepseek' for agent 'general_web_search_agent': LLM model 'Deepseek' is not configured.
+2025-07-11 11:37:36,718 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'deepseek-chat' using create_structured_chat_agent...
+2025-07-11 11:37:36,718 - llm_agent_platform - ERROR - agent_manager.py:56 - Failed to get or validate LLM 'deepseek-chat' for agent 'general_web_search_agent': Unsupported LLM provider: Deepseek
+2025-07-11 11:39:49,860 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'deepseek-chat' using create_structured_chat_agent...
+2025-07-11 11:39:51,448 - llm_agent_platform - ERROR - tool_manager.py:139 - ToolManager has not been initialized. Call initialize_tools() first.
+2025-07-11 11:40:38,918 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 11:41:04,705 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 11:41:04,720 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 11:41:50,986 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 11:41:50,994 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 11:41:50,994 - llm_agent_platform - WARNING - tool_manager.py:64 -   - TAVILY_API_KEY not set. TavilySearch tool will not be available.
+2025-07-11 11:41:51,035 - llm_agent_platform - INFO - tool_manager.py:73 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 11:41:51,035 - llm_agent_platform - INFO - tool_manager.py:85 -   - PythonREPL tool initialized successfully.
+2025-07-11 11:41:51,035 - llm_agent_platform - ERROR - tool_manager.py:95 -   - Failed to initialize WikipediaTool: name 'WikipediaTool' is not defined
+2025-07-11 11:41:51,035 - llm_agent_platform - WARNING - tool_manager.py:105 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 11:41:51,035 - llm_agent_platform - INFO - tool_manager.py:114 - All Agent Tools initialization complete.
+2025-07-11 11:41:51,035 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'deepseek-chat' using create_structured_chat_agent...
+2025-07-11 11:41:52,550 - llm_agent_platform - ERROR - agent_manager.py:121 - Failed to initialize AgentExecutor for 'general_web_search_agent' using create_structured_chat_agent: Prompt missing required variables: {'tool_names'}
+2025-07-11 11:42:39,221 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 11:42:39,230 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 11:42:39,230 - llm_agent_platform - WARNING - tool_manager.py:64 -   - TAVILY_API_KEY not set. TavilySearch tool will not be available.
+2025-07-11 11:42:39,246 - llm_agent_platform - INFO - tool_manager.py:73 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 11:42:39,247 - llm_agent_platform - INFO - tool_manager.py:85 -   - PythonREPL tool initialized successfully.
+2025-07-11 11:42:39,247 - llm_agent_platform - ERROR - tool_manager.py:95 -   - Failed to initialize WikipediaTool: name 'WikipediaTool' is not defined
+2025-07-11 11:42:39,247 - llm_agent_platform - WARNING - tool_manager.py:105 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 11:42:39,247 - llm_agent_platform - INFO - tool_manager.py:114 - All Agent Tools initialization complete.
+2025-07-11 11:42:39,247 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'deepseek-chat' using create_structured_chat_agent...
+2025-07-11 11:42:40,781 - llm_agent_platform - ERROR - agent_manager.py:121 - Failed to initialize AgentExecutor for 'general_web_search_agent' using create_structured_chat_agent: Prompt missing required variables: {'tools'}
+2025-07-11 11:43:11,266 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 11:43:11,275 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 11:43:11,275 - llm_agent_platform - WARNING - tool_manager.py:64 -   - TAVILY_API_KEY not set. TavilySearch tool will not be available.
+2025-07-11 11:43:11,292 - llm_agent_platform - INFO - tool_manager.py:73 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 11:43:11,293 - llm_agent_platform - INFO - tool_manager.py:85 -   - PythonREPL tool initialized successfully.
+2025-07-11 11:43:11,293 - llm_agent_platform - ERROR - tool_manager.py:95 -   - Failed to initialize WikipediaTool: name 'WikipediaTool' is not defined
+2025-07-11 11:43:11,293 - llm_agent_platform - WARNING - tool_manager.py:105 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 11:43:11,293 - llm_agent_platform - INFO - tool_manager.py:114 - All Agent Tools initialization complete.
+2025-07-11 11:43:11,293 - llm_agent_platform - INFO - agent_manager.py:39 - Initializing Agent 'general_web_search_agent' with LLM 'deepseek-chat' using create_structured_chat_agent...
+2025-07-11 11:43:12,833 - llm_agent_platform - ERROR - agent_manager.py:121 - Failed to initialize AgentExecutor for 'general_web_search_agent' using create_structured_chat_agent: Prompt missing required variables: {'tool_names'}
+2025-07-11 11:57:48,222 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 11:57:48,229 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 11:57:48,229 - llm_agent_platform - WARNING - tool_manager.py:64 -   - TAVILY_API_KEY not set. TavilySearch tool will not be available.
+2025-07-11 11:57:48,248 - llm_agent_platform - INFO - tool_manager.py:73 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 11:57:48,248 - llm_agent_platform - INFO - tool_manager.py:85 -   - PythonREPL tool initialized successfully.
+2025-07-11 11:57:48,248 - llm_agent_platform - ERROR - tool_manager.py:95 -   - Failed to initialize WikipediaTool: name 'WikipediaTool' is not defined
+2025-07-11 11:57:48,248 - llm_agent_platform - WARNING - tool_manager.py:105 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 11:57:48,248 - llm_agent_platform - INFO - tool_manager.py:114 - All Agent Tools initialization complete.
+2025-07-11 11:57:48,248 - llm_agent_platform - INFO - agent_manager.py:193 - Initializing new instance for Agent 'general_web_search_agent' with LLM 'deepseek-chat'...
+2025-07-11 12:01:01,595 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 12:01:01,603 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 12:01:01,603 - llm_agent_platform - WARNING - tool_manager.py:64 -   - TAVILY_API_KEY not set. TavilySearch tool will not be available.
+2025-07-11 12:01:01,619 - llm_agent_platform - INFO - tool_manager.py:73 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 12:01:01,619 - llm_agent_platform - INFO - tool_manager.py:85 -   - PythonREPL tool initialized successfully.
+2025-07-11 12:01:01,619 - llm_agent_platform - ERROR - tool_manager.py:95 -   - Failed to initialize WikipediaTool: name 'WikipediaTool' is not defined
+2025-07-11 12:01:01,619 - llm_agent_platform - WARNING - tool_manager.py:105 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 12:01:01,620 - llm_agent_platform - INFO - tool_manager.py:114 - All Agent Tools initialization complete.
+2025-07-11 12:01:01,620 - llm_agent_platform - INFO - agent_manager.py:193 - Initializing new instance for Agent 'general_web_search_agent' with LLM 'deepseek-chat'...
+2025-07-11 12:01:01,621 - llm_agent_platform - ERROR - agent_manager.py:204 - Failed to parse configuration for agent 'general_web_search_agent': 2 validation errors for AgentConfig
+name
+  Field required [type=missing, input_value={'description': '一个...时信息的Agent。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+tools
+  Field required [type=missing, input_value={'description': '一个...时信息的Agent。'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+2025-07-11 14:06:52,195 - llm_agent_platform - INFO - tool_manager.py:37 - Starting Agent Tools initialization...
+2025-07-11 14:06:52,209 - llm_agent_platform - INFO - tool_manager.py:47 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 14:06:52,210 - llm_agent_platform - WARNING - tool_manager.py:64 -   - TAVILY_API_KEY not set. TavilySearch tool will not be available.
+2025-07-11 14:06:52,253 - llm_agent_platform - INFO - tool_manager.py:73 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 14:06:52,253 - llm_agent_platform - INFO - tool_manager.py:85 -   - PythonREPL tool initialized successfully.
+2025-07-11 14:06:52,254 - llm_agent_platform - ERROR - tool_manager.py:100 -   - Failed to initialize WikipediaTool: 1 validation error for WikipediaQueryRun
+api_wrapper
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+2025-07-11 14:06:52,254 - llm_agent_platform - WARNING - tool_manager.py:110 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 14:06:52,254 - llm_agent_platform - INFO - tool_manager.py:119 - All Agent Tools initialization complete.
+2025-07-11 14:06:52,254 - llm_agent_platform - INFO - agent_manager.py:193 - Initializing new instance for Agent 'general_web_search_agent' with LLM 'deepseek-chat'...
+2025-07-11 14:06:53,932 - llm_agent_platform - WARNING - tool_manager.py:133 - Requested tool 'SerpApiSearch' not found or failed to initialize.
+2025-07-11 14:06:53,933 - llm_agent_platform - WARNING - tool_manager.py:153 -   - Skipping tool 'SerpApiSearch' as it's not available: Tool 'SerpApiSearch' not found or not available. Check configuration and API keys.
+2025-07-11 14:06:53,933 - llm_agent_platform - ERROR - agent_manager.py:221 - No usable tools found for agent 'general_web_search_agent'. Check tool configuration and API keys.
+2025-07-11 14:09:40,860 - llm_agent_platform - INFO - tool_manager.py:27 - Starting Agent Tools initialization...
+2025-07-11 14:09:40,860 - llm_agent_platform - ERROR - tool_manager.py:44 -   - Failed to initialize SerpApiSearch: module 'backend.config.settings' has no attribute 'SERPAPI_API_KEY'
+2025-07-11 14:09:40,885 - llm_agent_platform - INFO - tool_manager.py:53 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 14:09:40,886 - llm_agent_platform - ERROR - tool_manager.py:67 -   - Failed to initialize WikipediaTool: Could not import wikipedia python package. Please install it with `pip install wikipedia`.
+Traceback (most recent call last):
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\langchain_community\utilities\wikipedia.py", line 35, in validate_environment
+    import wikipedia
+ModuleNotFoundError: No module named 'wikipedia'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WorkStation\LLMProject\v3_st\backend\core\tool_manager.py", line 61, in initialize_tools
+    api_wrapper = WikipediaAPIWrapper(top_k_results=3, doc_content_chars_max=1000)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\pydantic\main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\langchain_community\utilities\wikipedia.py", line 41, in validate_environment
+    raise ImportError(
+ImportError: Could not import wikipedia python package. Please install it with `pip install wikipedia`.
+2025-07-11 14:09:40,889 - llm_agent_platform - ERROR - tool_manager.py:83 -   - Failed to initialize OpenWeatherMapTool: module 'backend.config.settings' has no attribute 'OPENWEATHERMAP_API_KEY'
+2025-07-11 14:09:40,889 - llm_agent_platform - INFO - tool_manager.py:86 - All available Agent Tools initialization complete.
+2025-07-11 14:09:40,889 - llm_agent_platform - INFO - agent_manager.py:193 - Initializing new instance for Agent 'general_web_search_agent' with LLM 'deepseek-chat'...
+2025-07-11 14:09:42,506 - llm_agent_platform - WARNING - tool_manager.py:101 - Requested tool 'SerpApiSearch' not found or failed to initialize. Skipping.
+2025-07-11 14:09:42,506 - llm_agent_platform - ERROR - agent_manager.py:221 - No usable tools found for agent 'general_web_search_agent'. Check tool configuration and API keys.
+2025-07-11 14:15:18,175 - llm_agent_platform - INFO - tool_manager.py:27 - Starting Agent Tools initialization...
+2025-07-11 14:15:18,185 - llm_agent_platform - INFO - tool_manager.py:40 -   - SerpApiSearch tool initialized successfully.
+2025-07-11 14:15:18,202 - llm_agent_platform - INFO - tool_manager.py:53 -   - DuckDuckGoSearch tool initialized successfully.
+2025-07-11 14:15:18,301 - llm_agent_platform - INFO - tool_manager.py:65 -   - WikipediaTool initialized successfully.
+2025-07-11 14:15:18,301 - llm_agent_platform - WARNING - tool_manager.py:81 -   - OPENWEATHERMAP_API_KEY not set. OpenWeatherMapTool will not be available.
+2025-07-11 14:15:18,301 - llm_agent_platform - INFO - tool_manager.py:86 - All available Agent Tools initialization complete.
+2025-07-11 14:15:18,301 - llm_agent_platform - INFO - agent_manager.py:193 - Initializing new instance for Agent 'general_web_search_agent' with LLM 'deepseek-chat'...
+2025-07-11 14:15:19,879 - llm_agent_platform - INFO - agent_manager.py:223 - Loaded tools for 'general_web_search_agent': ['SerpApiSearch']
+2025-07-11 14:15:20,379 - llm_agent_platform - INFO - agent_manager.py:230 - Successfully pulled prompt 'hwchase17/structured-chat-agent' from LangChain Hub.
+2025-07-11 14:15:20,379 - llm_agent_platform - INFO - agent_manager.py:248 - Agent 'general_web_search_agent' initialized successfully.
+2025-07-11 14:40:47,022 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 14:40:47,034 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 14:40:47,035 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 14:40:47,073 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 14:40:47,073 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 14:40:47,170 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 14:40:47,171 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 14:40:47,171 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 14:41:01,317 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 14:41:01,325 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 14:41:01,325 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 14:41:01,342 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 14:41:01,344 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 14:41:01,419 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 14:41:01,419 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 14:41:01,419 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 14:45:18,070 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 14:45:18,077 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 14:45:18,077 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 14:45:18,095 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 14:45:18,095 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 14:45:18,175 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 14:45:18,175 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 14:45:18,175 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 14:45:34,705 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 14:45:34,713 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 14:45:34,713 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 14:45:34,731 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 14:45:34,731 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 14:45:34,807 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 14:45:34,807 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 14:45:34,808 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 15:36:39,691 - llm_agent_platform - INFO - agent_manager.py:72 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-default
+2025-07-11 15:36:41,316 - llm_agent_platform - WARNING - tool_manager.py:240 - ToolManager 尚未显式初始化。正在自动调用 initialize_tools()。
+2025-07-11 15:36:41,317 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 15:36:41,331 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 15:36:41,331 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 15:36:41,371 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 15:36:41,371 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 15:36:41,468 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 15:36:41,468 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 15:36:41,468 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 15:36:41,468 - llm_agent_platform - INFO - agent_manager.py:100 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 15:36:42,522 - llm_agent_platform - INFO - prompt_manager.py:121 - 自定义提示词文件不存在，将创建默认文件。
+2025-07-11 15:36:42,523 - llm_agent_platform - INFO - prompt_manager.py:141 - 提示词已保存到文件: prompts/system_prompts.json
+2025-07-11 15:36:42,523 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 15:36:42,523 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 15:36:42,524 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 15:36:42,524 - llm_agent_platform - INFO - agent_manager.py:105 - 成功构建包含系统提示词 'default' 的 Prompt。
+2025-07-11 15:36:42,526 - llm_agent_platform - INFO - agent_manager.py:124 - Agent 'general_web_search_agent' 创建成功，使用系统提示词: default
+2025-07-11 15:36:42,527 - llm_agent_platform - INFO - prompt_manager.py:141 - 提示词已保存到文件: prompts/system_prompts.json
+2025-07-11 15:36:42,527 - llm_agent_platform - INFO - prompt_manager.py:182 - 成功创建系统提示词: search_expert
+2025-07-11 15:36:42,527 - llm_agent_platform - INFO - agent_manager.py:70 - 已清除旧的 Agent 缓存: general_web_search_agent-deepseek-chat-default
+2025-07-11 15:36:42,527 - llm_agent_platform - INFO - agent_manager.py:72 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-search_expert
+2025-07-11 15:36:42,527 - llm_agent_platform - INFO - agent_manager.py:100 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 15:36:43,331 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: search_expert
+2025-07-11 15:36:43,332 - llm_agent_platform - INFO - agent_manager.py:105 - 成功构建包含系统提示词 'search_expert' 的 Prompt。
+2025-07-11 15:36:43,332 - llm_agent_platform - INFO - agent_manager.py:124 - Agent 'general_web_search_agent' 创建成功，使用系统提示词: search_expert
+2025-07-11 15:36:43,332 - llm_agent_platform - INFO - agent_manager.py:223 - 成功更新 Agent 'general_web_search_agent' 的系统提示词为: search_expert
+2025-07-11 16:02:46,947 - llm_agent_platform - INFO - llm_manager.py:150 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 16:02:46,948 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 4 个自定义提示词。
+2025-07-11 16:02:46,948 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 16:02:46,948 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 16:02:46,948 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:03:30,607 - llm_agent_platform - INFO - llm_manager.py:196 - 完成流式对话 (模型: deepseek-chat, 提示词: default)
+2025-07-11 16:03:30,608 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:04:05,098 - llm_agent_platform - INFO - llm_manager.py:196 - 完成流式对话 (模型: deepseek-chat, 提示词: default)
+2025-07-11 16:04:05,099 - llm_agent_platform - INFO - prompt_manager.py:141 - 提示词已保存到文件: prompts/system_prompts.json
+2025-07-11 16:04:05,099 - llm_agent_platform - INFO - prompt_manager.py:182 - 成功创建系统提示词: research_assistant
+2025-07-11 16:04:05,099 - llm_agent_platform - INFO - agent_manager.py:97 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-research_assistant-True
+2025-07-11 16:04:06,388 - llm_agent_platform - INFO - llm_manager.py:150 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.0, streaming: True)
+2025-07-11 16:04:06,388 - llm_agent_platform - WARNING - tool_manager.py:240 - ToolManager 尚未显式初始化。正在自动调用 initialize_tools()。
+2025-07-11 16:04:06,388 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 16:04:06,398 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 16:04:06,398 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 16:04:06,416 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 16:04:06,416 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 16:04:06,529 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 16:04:06,529 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 16:04:06,529 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 16:04:06,529 - llm_agent_platform - INFO - agent_manager.py:125 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 16:04:07,126 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: research_assistant
+2025-07-11 16:04:07,126 - llm_agent_platform - INFO - agent_manager.py:130 - 成功构建包含系统提示词 'research_assistant' 的 Prompt。
+2025-07-11 16:04:07,128 - llm_agent_platform - INFO - agent_manager.py:148 - Agent 'general_web_search_agent' 创建成功，流式输出: True
+2025-07-11 16:04:44,843 - llm_agent_platform - INFO - agent_manager.py:231 - Agent 'general_web_search_agent' 流式执行完成
+2025-07-11 16:04:44,843 - llm_agent_platform - INFO - agent_manager.py:97 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-default-True
+2025-07-11 16:04:44,843 - llm_agent_platform - INFO - agent_manager.py:125 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 16:04:45,924 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:04:45,924 - llm_agent_platform - INFO - agent_manager.py:130 - 成功构建包含系统提示词 'default' 的 Prompt。
+2025-07-11 16:04:45,924 - llm_agent_platform - INFO - agent_manager.py:148 - Agent 'general_web_search_agent' 创建成功，流式输出: True
+2025-07-11 16:05:16,387 - llm_agent_platform - INFO - agent_manager.py:231 - Agent 'general_web_search_agent' 流式执行完成
+2025-07-11 16:05:17,684 - llm_agent_platform - INFO - llm_manager.py:150 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: False)
+2025-07-11 16:05:17,684 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:52:38,413 - llm_agent_platform - INFO - agent_manager.py:67 - 为会话 maybemed_basic_test 的 Agent general_web_search_agent 创建记忆，窗口大小: 5
+2025-07-11 16:52:38,939 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 16:52:38,939 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 16:52:38,939 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 16:52:38,939 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:52:40,546 - llm_agent_platform - INFO - llm_manager.py:150 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.0, streaming: True)
+2025-07-11 16:52:40,546 - llm_agent_platform - WARNING - tool_manager.py:240 - ToolManager 尚未显式初始化。正在自动调用 initialize_tools()。
+2025-07-11 16:52:40,546 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 16:52:40,562 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 16:52:40,562 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 16:52:40,602 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 16:52:40,602 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 16:52:40,699 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 16:52:40,699 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 16:52:40,699 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 16:53:03,483 - llm_agent_platform - INFO - agent_manager.py:407 - Agent 'general_web_search_agent' 在会话 maybemed_basic_test 中流式执行完成（带记忆）
+2025-07-11 16:53:04,205 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:20,001 - llm_agent_platform - INFO - agent_manager.py:407 - Agent 'general_web_search_agent' 在会话 maybemed_basic_test 中流式执行完成（带记忆）
+2025-07-11 16:53:20,001 - llm_agent_platform - INFO - agent_manager.py:67 - 为会话 maybemed_memory_mgmt 的 Agent general_web_search_agent 创建记忆，窗口大小: 10
+2025-07-11 16:53:20,001 - llm_agent_platform - INFO - agent_manager.py:143 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-default-False
+2025-07-11 16:53:21,289 - llm_agent_platform - INFO - llm_manager.py:150 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.0, streaming: False)
+2025-07-11 16:53:21,289 - llm_agent_platform - INFO - agent_manager.py:171 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 16:53:22,313 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:22,313 - llm_agent_platform - INFO - agent_manager.py:176 - 成功构建包含系统提示词 'default' 的 Prompt。
+2025-07-11 16:53:22,313 - llm_agent_platform - INFO - agent_manager.py:194 - Agent 'general_web_search_agent' 创建成功，流式输出: False
+2025-07-11 16:53:23,287 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:30,097 - llm_agent_platform - INFO - agent_manager.py:313 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中执行完成（带记忆）
+2025-07-11 16:53:30,833 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:36,945 - llm_agent_platform - INFO - agent_manager.py:313 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中执行完成（带记忆）
+2025-07-11 16:53:37,756 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:43,543 - llm_agent_platform - INFO - agent_manager.py:407 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中流式执行完成（带记忆）
+2025-07-11 16:53:43,543 - llm_agent_platform - INFO - agent_manager.py:84 - 已清除 Agent general_web_search_agent 在会话 maybemed_memory_mgmt 中的记忆
+2025-07-11 16:53:43,543 - llm_agent_platform - INFO - agent_manager.py:431 - 已清除会话 maybemed_memory_mgmt 中 Agent general_web_search_agent 的记忆
+2025-07-11 16:53:44,210 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:50,960 - llm_agent_platform - INFO - agent_manager.py:407 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中流式执行完成（带记忆）
+2025-07-11 16:53:50,960 - llm_agent_platform - INFO - agent_manager.py:67 - 为会话 maybemed_session_A 的 Agent general_web_search_agent 创建记忆，窗口大小: 10
+2025-07-11 16:53:51,587 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:53:57,223 - llm_agent_platform - INFO - agent_manager.py:313 - Agent 'general_web_search_agent' 在会话 maybemed_session_A 中执行完成（带记忆）
+2025-07-11 16:53:57,223 - llm_agent_platform - INFO - agent_manager.py:67 - 为会话 maybemed_session_B 的 Agent general_web_search_agent 创建记忆，窗口大小: 10
+2025-07-11 16:53:57,706 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:54:05,910 - llm_agent_platform - INFO - agent_manager.py:313 - Agent 'general_web_search_agent' 在会话 maybemed_session_B 中执行完成（带记忆）
+2025-07-11 16:54:07,024 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:54:13,401 - llm_agent_platform - INFO - agent_manager.py:407 - Agent 'general_web_search_agent' 在会话 maybemed_session_A 中流式执行完成（带记忆）
+2025-07-11 16:54:14,851 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:54:21,730 - llm_agent_platform - INFO - agent_manager.py:407 - Agent 'general_web_search_agent' 在会话 maybemed_session_B 中流式执行完成（带记忆）
+2025-07-11 17:06:19,455 - llm_agent_platform - INFO - llm_manager.py:68 - 为会话 maybemed_stream_test 创建 LLM 对话历史
+2025-07-11 17:06:19,455 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 17:06:19,455 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 17:06:19,455 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 17:06:19,455 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:06:21,026 - llm_agent_platform - INFO - llm_manager.py:276 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 17:06:40,509 - llm_agent_platform - INFO - llm_manager.py:402 - 完成带记忆的流式对话 (会话: maybemed_stream_test, 模型: deepseek-chat)
+2025-07-11 17:06:40,510 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:07:09,403 - llm_agent_platform - INFO - llm_manager.py:151 - LLM 会话 maybemed_stream_test 因token限制清理历史，估算token数: 2933
+2025-07-11 17:07:09,403 - llm_agent_platform - INFO - llm_manager.py:402 - 完成带记忆的流式对话 (会话: maybemed_stream_test, 模型: deepseek-chat)
+2025-07-11 17:07:09,403 - llm_agent_platform - INFO - llm_manager.py:68 - 为会话 maybemed_memory_mgmt 创建 LLM 对话历史
+2025-07-11 17:07:09,403 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:07:10,955 - llm_agent_platform - INFO - llm_manager.py:276 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: False)
+2025-07-11 17:07:24,904 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_memory_mgmt, 模型: deepseek-chat)
+2025-07-11 17:07:24,904 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:07:46,221 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_memory_mgmt, 模型: deepseek-chat)
+2025-07-11 17:07:46,221 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:08:01,661 - llm_agent_platform - INFO - llm_manager.py:151 - LLM 会话 maybemed_memory_mgmt 因token限制清理历史，估算token数: 1743
+2025-07-11 17:08:01,661 - llm_agent_platform - INFO - llm_manager.py:402 - 完成带记忆的流式对话 (会话: maybemed_memory_mgmt, 模型: deepseek-chat)
+2025-07-11 17:08:01,662 - llm_agent_platform - INFO - llm_manager.py:118 - 已清除 LLM 会话 maybemed_memory_mgmt 的历史记录
+2025-07-11 17:08:01,662 - llm_agent_platform - INFO - llm_manager.py:468 - 已清除 LLM 会话 maybemed_memory_mgmt 的历史记录
+2025-07-11 17:08:01,662 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:08:06,385 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_memory_mgmt, 模型: deepseek-chat)
+2025-07-11 17:08:06,385 - llm_agent_platform - INFO - llm_manager.py:68 - 为会话 maybemed_session_A 创建 LLM 对话历史
+2025-07-11 17:08:06,385 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:08:18,282 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_session_A, 模型: deepseek-chat)
+2025-07-11 17:08:18,282 - llm_agent_platform - INFO - llm_manager.py:68 - 为会话 maybemed_session_B 创建 LLM 对话历史
+2025-07-11 17:08:18,282 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:08:38,465 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_session_B, 模型: deepseek-chat)
+2025-07-11 17:08:38,465 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:08:50,923 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_session_A, 模型: deepseek-chat)
+2025-07-11 17:08:50,923 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:09:03,682 - llm_agent_platform - INFO - llm_manager.py:341 - 完成带记忆的对话 (会话: maybemed_session_B, 模型: deepseek-chat)
+2025-07-11 17:29:22,842 - llm_agent_platform - INFO - llm_manager.py:118 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 17:29:22,843 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 17:29:22,843 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 17:29:22,843 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 17:29:22,843 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:30:12,472 - llm_agent_platform - INFO - llm_manager.py:377 - 完成流式对话 (模型: deepseek-chat, 提示词: default)
+2025-07-11 17:30:12,472 - llm_agent_platform - WARNING - prompt_manager.py:170 - 提示词 'research_assistant' 已存在，创建失败。
+2025-07-11 17:30:12,472 - llm_agent_platform - INFO - agent_manager.py:61 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-research_assistant-True
+2025-07-11 17:30:14,009 - llm_agent_platform - INFO - llm_manager.py:118 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.0, streaming: True)
+2025-07-11 17:30:14,010 - llm_agent_platform - WARNING - tool_manager.py:240 - ToolManager 尚未显式初始化。正在自动调用 initialize_tools()。
+2025-07-11 17:30:14,010 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 17:30:14,021 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 17:30:14,021 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 17:30:14,058 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 17:30:14,058 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 17:30:14,183 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 17:30:14,183 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 17:30:14,183 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 17:30:14,183 - llm_agent_platform - INFO - agent_manager.py:89 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 17:30:15,035 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: research_assistant
+2025-07-11 17:30:15,035 - llm_agent_platform - INFO - agent_manager.py:94 - 成功构建包含系统提示词 'research_assistant' 的 Prompt。
+2025-07-11 17:30:15,036 - llm_agent_platform - INFO - agent_manager.py:112 - Agent 'general_web_search_agent' 创建成功，流式输出: True
+2025-07-11 17:30:55,508 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 maybemed_stream_test 创建 LLM 对话历史
+2025-07-11 17:30:55,509 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 17:30:55,509 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 17:30:55,509 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 17:30:55,509 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 17:30:57,074 - llm_agent_platform - INFO - llm_manager.py:118 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 18:44:42,214 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 maybemed_stream_test 创建 LLM 对话历史
+2025-07-11 18:44:42,215 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 18:44:42,215 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 18:44:42,215 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 18:44:42,215 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:44:43,010 - llm_agent_platform - INFO - llm_manager.py:118 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 18:44:59,154 - llm_agent_platform - INFO - llm_manager.py:244 - 完成带记忆的流式对话 (会话: maybemed_stream_test, 模型: deepseek-chat)
+2025-07-11 18:44:59,154 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:50:58,714 - llm_agent_platform - INFO - agent_memory.py:20 - 为会话 maybemed_basic_test 的 Agent general_web_search_agent 创建记忆，窗口大小: 5
+2025-07-11 18:50:59,362 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 18:50:59,363 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 18:50:59,363 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 18:50:59,363 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:51:00,047 - llm_agent_platform - INFO - llm_manager.py:118 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.0, streaming: True)
+2025-07-11 18:51:00,047 - llm_agent_platform - WARNING - tool_manager.py:240 - ToolManager 尚未显式初始化。正在自动调用 initialize_tools()。
+2025-07-11 18:51:00,047 - llm_agent_platform - INFO - tool_manager.py:50 - 开始初始化 Agent 工具...
+2025-07-11 18:51:00,061 - llm_agent_platform - INFO - tool_manager.py:96 -   ✓ SerpApiSearch 工具初始化成功。
+2025-07-11 18:51:00,061 - llm_agent_platform - WARNING - tool_manager.py:122 -   ⚠ 未设置 TAVILY_API_KEY 环境变量。TavilySearch 工具将不可用。
+2025-07-11 18:51:00,096 - llm_agent_platform - INFO - tool_manager.py:144 -   ✓ DuckDuckGoSearch 工具初始化成功。
+2025-07-11 18:51:00,096 - llm_agent_platform - INFO - tool_manager.py:164 -   ✓ PythonREPLTool 工具初始化成功。
+2025-07-11 18:51:00,183 - llm_agent_platform - INFO - tool_manager.py:192 -   ✓ WikipediaTool 工具初始化成功。
+2025-07-11 18:51:00,183 - llm_agent_platform - WARNING - tool_manager.py:221 -   ⚠ 未设置 OPENWEATHERMAP_API_KEY 环境变量。OpenWeatherMapTool 工具将不可用。
+2025-07-11 18:51:00,183 - llm_agent_platform - INFO - tool_manager.py:72 - 所有 Agent 工具初始化完成。成功初始化 4 个工具。
+2025-07-11 18:51:29,117 - llm_agent_platform - INFO - agent_manager.py:325 - Agent 'general_web_search_agent' 在会话 maybemed_basic_test 中流式执行完成（带记忆）
+2025-07-11 18:51:29,725 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:51:50,388 - llm_agent_platform - INFO - agent_manager.py:325 - Agent 'general_web_search_agent' 在会话 maybemed_basic_test 中流式执行完成（带记忆）
+2025-07-11 18:51:50,388 - llm_agent_platform - INFO - agent_memory.py:20 - 为会话 maybemed_memory_mgmt 的 Agent general_web_search_agent 创建记忆，窗口大小: 10
+2025-07-11 18:51:50,388 - llm_agent_platform - INFO - agent_manager.py:61 - 正在创建新的 Agent 实例: general_web_search_agent-deepseek-chat-default-False
+2025-07-11 18:51:50,869 - llm_agent_platform - INFO - llm_manager.py:118 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.0, streaming: False)
+2025-07-11 18:51:50,869 - llm_agent_platform - INFO - agent_manager.py:89 - 为 'general_web_search_agent' 加载工具: ['SerpApiSearch']
+2025-07-11 18:51:51,495 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:51:51,495 - llm_agent_platform - INFO - agent_manager.py:94 - 成功构建包含系统提示词 'default' 的 Prompt。
+2025-07-11 18:51:51,495 - llm_agent_platform - INFO - agent_manager.py:112 - Agent 'general_web_search_agent' 创建成功，流式输出: False
+2025-07-11 18:51:52,119 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:51:58,061 - llm_agent_platform - INFO - agent_manager.py:231 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中执行完成（带记忆）
+2025-07-11 18:51:58,816 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:06,965 - llm_agent_platform - INFO - agent_manager.py:231 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中执行完成（带记忆）
+2025-07-11 18:52:07,590 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:13,914 - llm_agent_platform - INFO - agent_manager.py:325 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中流式执行完成（带记忆）
+2025-07-11 18:52:13,914 - llm_agent_platform - INFO - agent_memory.py:37 - 已清除 Agent general_web_search_agent 在会话 maybemed_memory_mgmt 中的记忆
+2025-07-11 18:52:13,914 - llm_agent_platform - INFO - agent_manager.py:349 - 已清除会话 maybemed_memory_mgmt 中 Agent general_web_search_agent 的记忆
+2025-07-11 18:52:14,528 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:20,963 - llm_agent_platform - INFO - agent_manager.py:325 - Agent 'general_web_search_agent' 在会话 maybemed_memory_mgmt 中流式执行完成（带记忆）
+2025-07-11 18:52:20,963 - llm_agent_platform - INFO - agent_memory.py:20 - 为会话 maybemed_session_A 的 Agent general_web_search_agent 创建记忆，窗口大小: 10
+2025-07-11 18:52:21,737 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:30,722 - llm_agent_platform - INFO - agent_manager.py:231 - Agent 'general_web_search_agent' 在会话 maybemed_session_A 中执行完成（带记忆）
+2025-07-11 18:52:30,722 - llm_agent_platform - INFO - agent_memory.py:20 - 为会话 maybemed_session_B 的 Agent general_web_search_agent 创建记忆，窗口大小: 10
+2025-07-11 18:52:31,355 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:38,669 - llm_agent_platform - INFO - agent_manager.py:231 - Agent 'general_web_search_agent' 在会话 maybemed_session_B 中执行完成（带记忆）
+2025-07-11 18:52:39,324 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:46,135 - llm_agent_platform - INFO - agent_manager.py:325 - Agent 'general_web_search_agent' 在会话 maybemed_session_A 中流式执行完成（带记忆）
+2025-07-11 18:52:46,756 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 18:52:54,537 - llm_agent_platform - INFO - agent_manager.py:325 - Agent 'general_web_search_agent' 在会话 maybemed_session_B 中流式执行完成（带记忆）
+2025-07-11 19:49:14,930 - llm_agent_platform - INFO - llm_manager.py:48 - 创建 LLM 实例: deepseek_instance_1 (模型: deepseek-chat)
+2025-07-11 19:49:14,930 - llm_agent_platform - INFO - llm_manager.py:320 - 成功创建 LLM 实例: deepseek_instance_1
+2025-07-11 19:49:14,930 - llm_agent_platform - INFO - llm_manager.py:48 - 创建 LLM 实例: deepseek_instance_2 (模型: deepseek-chat)
+2025-07-11 19:49:14,931 - llm_agent_platform - INFO - llm_manager.py:320 - 成功创建 LLM 实例: deepseek_instance_2
+2025-07-11 19:49:14,931 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 deepseek_instance_1-session_001 创建 LLM 对话历史
+2025-07-11 19:49:14,931 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 19:49:14,931 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 19:49:14,931 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 19:49:14,931 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 19:49:15,718 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: False)
+2025-07-11 19:49:25,454 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_1 完成对话 (会话: session_001)
+2025-07-11 19:49:25,454 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 deepseek_instance_2-session_001 创建 LLM 对话历史
+2025-07-11 19:49:25,454 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 19:49:25,876 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.3, streaming: False)
+2025-07-11 19:49:34,530 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_2 完成对话 (会话: session_001)
+2025-07-11 19:49:34,530 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 19:49:40,320 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_1 完成对话 (会话: session_001)
+2025-07-11 19:49:40,320 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 19:49:45,854 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_2 完成对话 (会话: session_001)
+2025-07-11 19:49:45,854 - llm_agent_platform - INFO - llm_manager.py:85 - 创建共享对话历史: model_switching_session
+2025-07-11 19:49:45,854 - llm_agent_platform - INFO - llm_manager.py:448 - 创建共享对话: model_switching_session
+2025-07-11 19:49:45,854 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 19:49:45,854 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: None -> deepseek-chat
+2025-07-11 19:49:46,421 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 19:50:15,862 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: deepseek-chat
+2025-07-11 19:50:15,862 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 19:50:15,862 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: deepseek-chat -> qwen-max
+2025-07-11 19:50:15,883 - llm_agent_platform - ERROR - llm_manager.py:559 - 模型切换流式对话失败: Unsupported LLM provider: Alibaba
+Traceback (most recent call last):
+  File "E:\WorkStation\LLMProject\v3_st\backend\core\llm\llm_manager.py", line 543, in chat_with_model_switching_stream
+    llm = cls.get_llm(model_name, temperature, streaming=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkStation\LLMProject\v3_st\backend\core\llm\llm_manager.py", line 280, in get_llm
+    raise ValueError(f"Unsupported LLM provider: {provider}")
+ValueError: Unsupported LLM provider: Alibaba
+2025-07-11 20:01:21,655 - llm_agent_platform - INFO - llm_manager.py:48 - 创建 LLM 实例: deepseek_instance_1 (模型: deepseek-chat)
+2025-07-11 20:01:21,655 - llm_agent_platform - INFO - llm_manager.py:320 - 成功创建 LLM 实例: deepseek_instance_1
+2025-07-11 20:01:21,655 - llm_agent_platform - INFO - llm_manager.py:48 - 创建 LLM 实例: deepseek_instance_2 (模型: deepseek-chat)
+2025-07-11 20:01:21,655 - llm_agent_platform - INFO - llm_manager.py:320 - 成功创建 LLM 实例: deepseek_instance_2
+2025-07-11 20:01:21,656 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 deepseek_instance_1-session_001 创建 LLM 对话历史
+2025-07-11 20:01:21,656 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 20:01:21,656 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 20:01:21,656 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 20:01:21,656 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:01:22,375 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: False)
+2025-07-11 20:01:31,247 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_1 完成对话 (会话: session_001)
+2025-07-11 20:01:31,247 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 deepseek_instance_2-session_001 创建 LLM 对话历史
+2025-07-11 20:01:31,247 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:01:31,673 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.3, streaming: False)
+2025-07-11 20:01:38,852 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_2 完成对话 (会话: session_001)
+2025-07-11 20:01:38,853 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:01:44,219 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_1 完成对话 (会话: session_001)
+2025-07-11 20:01:44,219 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:01:50,311 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_2 完成对话 (会话: session_001)
+2025-07-11 20:01:50,311 - llm_agent_platform - INFO - llm_manager.py:85 - 创建共享对话历史: model_switching_session
+2025-07-11 20:01:50,311 - llm_agent_platform - INFO - llm_manager.py:448 - 创建共享对话: model_switching_session
+2025-07-11 20:01:50,311 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:01:50,311 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: None -> deepseek-chat
+2025-07-11 20:01:50,756 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 20:02:16,157 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: deepseek-chat
+2025-07-11 20:02:16,157 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:02:16,157 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: deepseek-chat -> qwen-max
+2025-07-11 20:02:16,180 - llm_agent_platform - ERROR - llm_manager.py:559 - 模型切换流式对话失败: Could not import dashscope python package. Please install it with `pip install dashscope --upgrade`.
+Traceback (most recent call last):
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\langchain_community\chat_models\tongyi.py", line 483, in validate_environment
+    import dashscope
+ModuleNotFoundError: No module named 'dashscope'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\WorkStation\LLMProject\v3_st\backend\core\llm\llm_manager.py", line 543, in chat_with_model_switching_stream
+    llm = cls.get_llm(model_name, temperature, streaming=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\WorkStation\LLMProject\v3_st\backend\core\llm\llm_manager.py", line 263, in get_llm
+    llm = ChatTongyi(
+          ^^^^^^^^^^^
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\langchain_core\load\serializable.py", line 130, in __init__
+    super().__init__(*args, **kwargs)
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\pydantic\main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\pydantic\_internal\_decorators_v1.py", line 148, in _wrapper1
+    return validator(values)
+           ^^^^^^^^^^^^^^^^^
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\langchain_core\utils\pydantic.py", line 168, in wrapper
+    return func(cls, values)
+           ^^^^^^^^^^^^^^^^^
+  File "E:\pytorch\Anaconda\envs\conda_llm_py312\Lib\site-packages\langchain_community\chat_models\tongyi.py", line 485, in validate_environment
+    raise ImportError(
+ImportError: Could not import dashscope python package. Please install it with `pip install dashscope --upgrade`.
+2025-07-11 20:03:30,510 - llm_agent_platform - INFO - llm_manager.py:48 - 创建 LLM 实例: deepseek_instance_1 (模型: deepseek-chat)
+2025-07-11 20:03:30,510 - llm_agent_platform - INFO - llm_manager.py:320 - 成功创建 LLM 实例: deepseek_instance_1
+2025-07-11 20:03:30,510 - llm_agent_platform - INFO - llm_manager.py:48 - 创建 LLM 实例: deepseek_instance_2 (模型: deepseek-chat)
+2025-07-11 20:03:30,510 - llm_agent_platform - INFO - llm_manager.py:320 - 成功创建 LLM 实例: deepseek_instance_2
+2025-07-11 20:03:30,510 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 deepseek_instance_1-session_001 创建 LLM 对话历史
+2025-07-11 20:03:30,510 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 20:03:30,511 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 20:03:30,511 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 20:03:30,511 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:03:31,262 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: False)
+2025-07-11 20:03:39,388 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_1 完成对话 (会话: session_001)
+2025-07-11 20:03:39,388 - llm_agent_platform - INFO - llm_conversation_history.py:35 - 为会话 deepseek_instance_2-session_001 创建 LLM 对话历史
+2025-07-11 20:03:39,388 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:03:39,823 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.3, streaming: False)
+2025-07-11 20:03:47,848 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_2 完成对话 (会话: session_001)
+2025-07-11 20:03:47,848 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:03:53,207 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_1 完成对话 (会话: session_001)
+2025-07-11 20:03:53,208 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:03:58,577 - llm_agent_platform - INFO - llm_manager.py:366 - 实例 deepseek_instance_2 完成对话 (会话: session_001)
+2025-07-11 20:03:58,577 - llm_agent_platform - INFO - llm_manager.py:85 - 创建共享对话历史: model_switching_session
+2025-07-11 20:03:58,577 - llm_agent_platform - INFO - llm_manager.py:448 - 创建共享对话: model_switching_session
+2025-07-11 20:03:58,578 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:03:58,578 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: None -> deepseek-chat
+2025-07-11 20:03:59,024 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 20:04:23,187 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: deepseek-chat
+2025-07-11 20:04:23,187 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:04:23,187 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: deepseek-chat -> qwen-max
+2025-07-11 20:04:23,445 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: qwen-max (temperature: 0.7, streaming: True)
+2025-07-11 20:05:03,665 - llm_agent_platform - INFO - llm_manager.py:85 - 创建共享对话历史: model_switching_session
+2025-07-11 20:05:03,665 - llm_agent_platform - INFO - llm_manager.py:448 - 创建共享对话: model_switching_session
+2025-07-11 20:05:03,665 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 20:05:03,665 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 20:05:03,665 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 20:05:03,665 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:05:03,666 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: None -> deepseek-chat
+2025-07-11 20:05:04,390 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 20:05:33,130 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: deepseek-chat
+2025-07-11 20:05:33,130 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:05:33,130 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: deepseek-chat -> qwen-max
+2025-07-11 20:05:33,362 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: qwen-max (temperature: 0.7, streaming: True)
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - llm_manager.py:85 - 创建共享对话历史: model_switching_session
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - llm_manager.py:448 - 创建共享对话: model_switching_session
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:06:01,480 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: None -> deepseek-chat
+2025-07-11 20:06:02,208 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 20:06:18,162 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: deepseek-chat
+2025-07-11 20:06:18,163 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:06:18,163 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: deepseek-chat -> qwen-max
+2025-07-11 20:06:18,371 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: qwen-max (temperature: 0.7, streaming: True)
+2025-07-11 20:06:58,951 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: qwen-max
+2025-07-11 20:06:58,951 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 20:06:58,952 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: qwen-max -> glm-4-air
+2025-07-11 20:06:58,973 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: glm-4-air (temperature: 0.7, streaming: True)
+2025-07-11 20:07:14,194 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: glm-4-air

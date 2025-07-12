@@ -1,0 +1,9 @@
+2025-07-11 16:26:49,780 - llm_agent_platform - INFO - llm_manager.py:150 - 成功创建 LLM 实例: deepseek-chat (temperature: 0.7, streaming: True)
+2025-07-11 16:26:49,782 - llm_agent_platform - INFO - prompt_manager.py:121 - 自定义提示词文件不存在，将创建默认文件。
+2025-07-11 16:26:49,783 - llm_agent_platform - INFO - prompt_manager.py:141 - 提示词已保存到文件: prompts/system_prompts.json
+2025-07-11 16:26:49,783 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-11 16:26:49,783 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-11 16:26:49,783 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:27:12,274 - llm_agent_platform - INFO - llm_manager.py:254 - 完成带历史的流式对话 (模型: deepseek-chat, 历史消息: 0 条)
+2025-07-11 16:27:12,274 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: default
+2025-07-11 16:27:42,975 - llm_agent_platform - INFO - llm_manager.py:254 - 完成带历史的流式对话 (模型: deepseek-chat, 历史消息: 2 条)

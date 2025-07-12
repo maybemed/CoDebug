@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Body
+from fastapi import APIRouter
 import json
 from pathlib import Path
 from pydantic import BaseModel
-from ...core.rte import rte_from_text
-import os
+from backend.utils.rte import rte_from_text
+
 router = APIRouter()
 
 class KGRequest(BaseModel):
