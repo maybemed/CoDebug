@@ -11,3 +11,5 @@ Thumbs.db
 
 # 忽略 backend/core 目录下的 README.md 文件
 backend/core/README.md
+
+backend/.env

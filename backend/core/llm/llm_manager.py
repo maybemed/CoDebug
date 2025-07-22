@@ -1,8 +1,8 @@
 # @user: maybemed
-# @last_update: 2025-07-12 01:15:30 UTC
-# @version: llm_instance_with_memory_transfer
+# @last_update: 2025-07-12 02:10:44 UTC
+# @version: simplified_single_conversation_per_instance
 
-from typing import Dict, Any, Optional, List, Generator, Union, Callable
+from typing import Dict, Any, Optional, List, Generator, Union, Callable, AsyncGenerator
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage, AIMessage
 from langchain_core.callbacks import BaseCallbackHandler
@@ -19,7 +19,9 @@ from backend.config.settings import settings
 from backend.core.prompt_manager import PromptManager
 from backend.utils.logger import logger
 from backend.core.llm.llm_conversation_history import LLMConversationHistory
+from backend.core.RAG.rag_engine import RAGEngine
 
+# 原有的导入保持不变...
 from langchain_openai import ChatOpenAI
 from langchain_deepseek import ChatDeepSeek
 from langchain_community.chat_models import QianfanChatEndpoint
@@ -30,9 +32,8 @@ from langchain_community.chat_models import ChatSparkLLM
 
 class LLMInstance:
     """
-    LLM 实例类 - 作为主要的对话接口
-
-    每个实例封装了模型、配置和记忆，支持记忆迁移
+    LLM 实例类 - 一个实例绑定一个对话历史
+    每个实例只维护一个对话历史，更清晰简洁
     """
 
     def __init__(self,
@@ -46,217 +47,178 @@ class LLMInstance:
         self.temperature = temperature
         self.max_messages = max_messages
         self.max_tokens = max_tokens
-        self.conversation_histories: Dict[str, LLMConversationHistory] = {}
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
+        # 每个实例只有一个对话历史
+        self.conversation = LLMConversationHistory(
+            session_id=instance_id,
+            max_messages=max_messages,
+            max_tokens=max_tokens
+        )
+
         logger.info(f"创建 LLM 实例: {instance_id} (模型: {model_name})")
 
-    def _get_or_create_conversation(self, session_id: str) -> LLMConversationHistory:
-        """获取或创建对话历史"""
-        if session_id not in self.conversation_histories:
-            self.conversation_histories[session_id] = LLMConversationHistory(
-                session_id=f"{self.instance_id}-{session_id}",
-                max_messages=self.max_messages,
-                max_tokens=self.max_tokens
-            )
-        return self.conversation_histories[session_id]
-
-    def chat(self,
-             user_message: str,
-             session_id: str,
-             system_prompt_name: str = "default") -> str:
+    def chat(self, user_message: str, system_prompt_name: str = "default") -> str:
         """
         进行对话（非流式）
 
         Args:
             user_message: 用户消息
-            session_id: 会话ID
             system_prompt_name: 系统提示词名称
 
         Returns:
             str: AI 回复
         """
-        conversation = self._get_or_create_conversation(session_id)
-
         try:
+            # RAG 检索
+            rag_engine = RAGEngine()
+            rag_contexts = rag_engine.query(user_message, top_k=3)
+            rag_context_str = "\n\n".join(rag_contexts)
             # 更新系统消息
             system_content = LLMManager._get_system_prompt_content(system_prompt_name)
             if system_content:
-                conversation.update_system_message(system_content)
-
+                if rag_contexts:
+                    system_content = f"【以下是知识库检索内容，可作为回答参考】\n{rag_context_str}\n\n{system_content}"
+                self.conversation.update_system_message(system_content)
             # 添加用户消息
-            conversation.add_user_message(user_message)
+            self.conversation.add_user_message(user_message)
 
             # 获取 LLM 并进行对话
             llm = LLMManager.get_llm(self.model_name, self.temperature, streaming=False)
-            messages = conversation.get_messages()
+            messages = self.conversation.get_messages()
 
             response = llm.invoke(messages)
-            ai_reply = response.content
+            ai_reply = response.content if isinstance(response.content, str) else str(response.content)
 
             # 添加AI回复
-            conversation.add_ai_message(ai_reply)
+            self.conversation.add_ai_message(ai_reply)
             self.updated_at = datetime.now()
 
-            logger.info(f"实例 {self.instance_id} 完成对话 (会话: {session_id})")
+            logger.info(f"实例 {self.instance_id} 完成对话")
             return ai_reply
 
         except Exception as e:
             logger.error(f"实例对话失败: {e}", exc_info=True)
             raise RuntimeError(f"实例对话失败: {e}")
 
-    def chat_stream(self,
-                    user_message: str,
-                    session_id: str,
-                    system_prompt_name: str = "default") -> Generator[str, None, str]:
+    # 位于您的 LLM 实例类中
+    async def chat_stream(self, user_message: str, system_prompt_name: str = "default") -> AsyncGenerator[str, None]:
         """
-        进行流式对话
+        进行流式对话 (异步版本)
 
         Args:
             user_message: 用户消息
-            session_id: 会话ID
             system_prompt_name: 系统提示词名称
 
         Yields:
             str: 每个内容块
-
-        Returns:
-            str: 完整的回复内容
         """
-        conversation = self._get_or_create_conversation(session_id)
-
         try:
+            # RAG 检索
+            rag_engine = RAGEngine()
+            rag_contexts = rag_engine.query(user_message, top_k=3)
+            rag_context_str = "\n\n".join(rag_contexts)
             # 更新系统消息
             system_content = LLMManager._get_system_prompt_content(system_prompt_name)
             if system_content:
-                conversation.update_system_message(system_content)
-
+                if rag_contexts:
+                    system_content = f"【以下是知识库检索内容，可作为回答参考】\n{rag_context_str}\n\n{system_content}"
+                self.conversation.update_system_message(system_content)
             # 添加用户消息
-            conversation.add_user_message(user_message)
+            self.conversation.add_user_message(user_message)
 
             # 获取 LLM 并进行流式对话
             llm = LLMManager.get_llm(self.model_name, self.temperature, streaming=True)
-            messages = conversation.get_messages()
+            messages = self.conversation.get_messages()
+
+            # 创建一个列表来收集所有数据块
+            full_content_parts = []
 
             # 流式调用
-            full_content = ""
-            for chunk in llm.stream(messages):
+            async for chunk in llm.astream(messages):
                 if hasattr(chunk, 'content') and chunk.content:
                     content_piece = chunk.content
-                    full_content += content_piece
-                    yield content_piece
+                    if isinstance(content_piece, str):
+                        full_content_parts.append(content_piece)
+                        yield content_piece
 
-            # 添加完整回复
-            conversation.add_ai_message(full_content)
+            # 在循环结束后，将收集到的数据块拼接成完整消息
+            full_content = "".join(full_content_parts)
+
+            # 添加完整回复到对话历史
+            self.conversation.add_ai_message(full_content)
             self.updated_at = datetime.now()
 
-            logger.info(f"实例 {self.instance_id} 完成流式对话 (会话: {session_id})")
-            return full_content
+            logger.info(f"实例 {self.instance_id} 完成流式对话，共计 {len(full_content)} 字符")
 
         except Exception as e:
             logger.error(f"实例流式对话失败: {e}", exc_info=True)
             raise RuntimeError(f"实例流式对话失败: {e}")
 
-    def get_conversation_history(self, session_id: str) -> List[BaseMessage]:
-        """获取指定会话的对话历史"""
-        if session_id in self.conversation_histories:
-            return self.conversation_histories[session_id].get_messages()
-        return []
+    def get_conversation_history(self) -> List[BaseMessage]:
+        """获取对话历史"""
+        return self.conversation.get_messages()
 
-    def get_all_conversations(self) -> Dict[str, List[BaseMessage]]:
-        """获取所有会话的对话历史"""
-        return {
-            session_id: conversation.get_messages()
-            for session_id, conversation in self.conversation_histories.items()
-        }
+    def clear_conversation(self, keep_system_message: bool = True):
+        """清除对话历史"""
+        self.conversation.clear_history(keep_system_message)
+        self.updated_at = datetime.now()
+        logger.info(f"实例 {self.instance_id} 清除对话历史")
 
-    def clear_conversation(self, session_id: str, keep_system_message: bool = True):
-        """清除指定会话的历史"""
-        if session_id in self.conversation_histories:
-            self.conversation_histories[session_id].clear_history(keep_system_message)
-            self.updated_at = datetime.now()
-            logger.info(f"实例 {self.instance_id} 清除会话 {session_id} 历史")
-
-    def delete_conversation(self, session_id: str):
-        """删除指定会话"""
-        if session_id in self.conversation_histories:
-            del self.conversation_histories[session_id]
-            self.updated_at = datetime.now()
-            logger.info(f"实例 {self.instance_id} 删除会话 {session_id}")
-
-    def copy_memory_from(self, source_instance: 'LLMInstance', session_id: str = None):
+    def copy_memory_from(self, source_instance: 'LLMInstance'):
         """
         从另一个实例复制记忆
 
         Args:
             source_instance: 源实例
-            session_id: 指定会话ID，如果为None则复制所有会话
         """
-        if session_id:
-            # 复制指定会话
-            if session_id in source_instance.conversation_histories:
-                source_conversation = source_instance.conversation_histories[session_id]
+        # 深拷贝对话历史
+        source_conversation = source_instance.conversation
 
-                # 深拷贝对话历史
-                new_conversation = LLMConversationHistory(
-                    session_id=f"{self.instance_id}-{session_id}",
-                    max_messages=self.max_messages,
-                    max_tokens=self.max_tokens
-                )
+        # 重新初始化对话历史
+        self.conversation = LLMConversationHistory(
+            session_id=self.instance_id,
+            max_messages=self.max_messages,
+            max_tokens=self.max_tokens
+        )
 
-                # 复制所有消息
-                new_conversation.messages = copy.deepcopy(source_conversation.messages)
-                new_conversation.created_at = source_conversation.created_at
-                new_conversation.updated_at = datetime.now()
+        # 复制所有消息
+        self.conversation.messages = copy.deepcopy(source_conversation.messages)
+        self.conversation.created_at = source_conversation.created_at
+        self.conversation.updated_at = datetime.now()
+        self.updated_at = datetime.now()
 
-                self.conversation_histories[session_id] = new_conversation
-                self.updated_at = datetime.now()
+        logger.info(f"实例 {self.instance_id} 从 {source_instance.instance_id} 复制记忆")
 
-                logger.info(f"实例 {self.instance_id} 从 {source_instance.instance_id} 复制会话 {session_id} 记忆")
-        else:
-            # 复制所有会话
-            for src_session_id, src_conversation in source_instance.conversation_histories.items():
-                new_conversation = LLMConversationHistory(
-                    session_id=f"{self.instance_id}-{src_session_id}",
-                    max_messages=self.max_messages,
-                    max_tokens=self.max_tokens
-                )
-
-                # 复制所有消息
-                new_conversation.messages = copy.deepcopy(src_conversation.messages)
-                new_conversation.created_at = src_conversation.created_at
-                new_conversation.updated_at = datetime.now()
-
-                self.conversation_histories[src_session_id] = new_conversation
-
-            self.updated_at = datetime.now()
-            logger.info(f"实例 {self.instance_id} 从 {source_instance.instance_id} 复制所有会话记忆")
-
-    def transfer_memory_to(self, target_instance: 'LLMInstance', session_id: str = None):
+    def transfer_memory_to(self, target_instance: 'LLMInstance'):
         """
         将记忆转移到另一个实例
 
         Args:
             target_instance: 目标实例
-            session_id: 指定会话ID，如果为None则转移所有会话
         """
-        target_instance.copy_memory_from(self, session_id)
+        target_instance.copy_memory_from(self)
         logger.info(f"实例 {self.instance_id} 向 {target_instance.instance_id} 转移记忆")
 
     def get_stats(self) -> Dict[str, Any]:
         """获取实例统计信息"""
-        total_messages = sum(len(conv.get_messages()) for conv in self.conversation_histories.values())
+        conversation_stats = self.conversation.get_stats()
 
         return {
             "instance_id": self.instance_id,
             "model_name": self.model_name,
             "temperature": self.temperature,
-            "active_conversations": len(self.conversation_histories),
-            "total_messages": total_messages,
-            "conversation_ids": list(self.conversation_histories.keys()),
+            "max_messages": self.max_messages,
+            "max_tokens": self.max_tokens,
+            "total_messages": conversation_stats["total_messages"],
+            "message_types": conversation_stats["message_types"],
+            "total_characters": conversation_stats["total_characters"],
+            "estimated_tokens": conversation_stats["estimated_tokens"],
             "created_at": self.created_at.isoformat(),
-            "updated_at": self.updated_at.isoformat()
+            "updated_at": self.updated_at.isoformat(),
+            "conversation_created_at": conversation_stats["created_at"],
+            "conversation_updated_at": conversation_stats["updated_at"]
         }
 
 
@@ -275,7 +237,7 @@ class LLMManager:
     # 基础 LLM 实例缓存
     _llm_instances: Dict[str, BaseChatModel] = {}
 
-    # LLM 实例管理
+    # LLM 用户实例管理
     _llm_user_instances: Dict[str, LLMInstance] = {}  # instance_id -> LLMInstance
 
     @classmethod
@@ -410,20 +372,18 @@ class LLMManager:
             for instance_id, instance in cls._llm_user_instances.items()
         }
 
-    # =============== 便捷的记忆操作方法 ===============
+    # =============== 记忆操作方法 ===============
 
     @classmethod
     def copy_memory(cls,
                     source_instance_id: str,
-                    target_instance_id: str,
-                    session_id: str = None) -> bool:
+                    target_instance_id: str) -> bool:
         """
         复制记忆从一个实例到另一个实例
 
         Args:
             source_instance_id: 源实例ID
             target_instance_id: 目标实例ID
-            session_id: 指定会话ID，如果为None则复制所有会话
 
         Returns:
             bool: 操作是否成功
@@ -440,7 +400,7 @@ class LLMManager:
             return False
 
         try:
-            target_instance.copy_memory_from(source_instance, session_id)
+            target_instance.copy_memory_from(source_instance)
             logger.info(f"成功复制记忆: {source_instance_id} -> {target_instance_id}")
             return True
         except Exception as e:
@@ -451,34 +411,26 @@ class LLMManager:
     def transfer_memory(cls,
                         source_instance_id: str,
                         target_instance_id: str,
-                        session_id: str = None,
-                        delete_source: bool = False) -> bool:
+                        clear_source: bool = False) -> bool:
         """
         转移记忆从一个实例到另一个实例
 
         Args:
             source_instance_id: 源实例ID
             target_instance_id: 目标实例ID
-            session_id: 指定会话ID，如果为None则转移所有会话
-            delete_source: 是否删除源实例的记忆
+            clear_source: 是否清除源实例的记忆
 
         Returns:
             bool: 操作是否成功
         """
-        if not cls.copy_memory(source_instance_id, target_instance_id, session_id):
+        if not cls.copy_memory(source_instance_id, target_instance_id):
             return False
 
-        if delete_source:
+        if clear_source:
             source_instance = cls.get_instance(source_instance_id)
             if source_instance:
-                if session_id:
-                    source_instance.delete_conversation(session_id)
-                else:
-                    # 清除所有会话
-                    for conv_id in list(source_instance.conversation_histories.keys()):
-                        source_instance.delete_conversation(conv_id)
-
-                logger.info(f"已删除源实例 {source_instance_id} 的记忆")
+                source_instance.clear_conversation()
+                logger.info(f"已清除源实例 {source_instance_id} 的记忆")
 
         return True
 
@@ -487,8 +439,7 @@ class LLMManager:
                                  source_instance_id: str,
                                  new_model_name: str,
                                  new_instance_id: str = None,
-                                 temperature: float = 0.7,
-                                 session_id: str = None) -> LLMInstance:
+                                 temperature: float = 0.7) -> LLMInstance:
         """
         切换模型并保留记忆
 
@@ -497,7 +448,6 @@ class LLMManager:
             new_model_name: 新模型名称
             new_instance_id: 新实例ID，如果为None则自动生成
             temperature: 新实例的温度
-            session_id: 指定会话ID，如果为None则转移所有会话
 
         Returns:
             LLMInstance: 新创建的实例
@@ -521,9 +471,50 @@ class LLMManager:
         )
 
         # 转移记忆
-        cls.transfer_memory(source_instance_id, new_instance_id, session_id, delete_source=False)
+        cls.transfer_memory(source_instance_id, new_instance_id, clear_source=False)
 
         logger.info(f"模型切换完成: {source_instance.model_name} -> {new_model_name} (实例: {new_instance_id})")
+        return new_instance
+
+    @classmethod
+    def clone_instance(cls,
+                       source_instance_id: str,
+                       new_instance_id: str,
+                       new_model_name: str = None,
+                       new_temperature: float = None) -> LLMInstance:
+        """
+        克隆实例（保留记忆，可选择性修改模型和参数）
+
+        Args:
+            source_instance_id: 源实例ID
+            new_instance_id: 新实例ID
+            new_model_name: 新模型名称，如果为None则使用源实例的模型
+            new_temperature: 新温度，如果为None则使用源实例的温度
+
+        Returns:
+            LLMInstance: 克隆的实例
+        """
+        source_instance = cls.get_instance(source_instance_id)
+        if not source_instance:
+            raise ValueError(f"源实例 {source_instance_id} 不存在")
+
+        # 使用源实例的配置（除非明确指定新值）
+        model_name = new_model_name or source_instance.model_name
+        temperature = new_temperature if new_temperature is not None else source_instance.temperature
+
+        # 创建新实例
+        new_instance = cls.create_instance(
+            instance_id=new_instance_id,
+            model_name=model_name,
+            temperature=temperature,
+            max_messages=source_instance.max_messages,
+            max_tokens=source_instance.max_tokens
+        )
+
+        # 复制记忆
+        cls.copy_memory(source_instance_id, new_instance_id)
+
+        logger.info(f"克隆实例完成: {source_instance_id} -> {new_instance_id}")
         return new_instance
 
     # =============== 辅助方法 ===============
@@ -544,5 +535,104 @@ class LLMManager:
         """获取可用的模型信息"""
         return settings.AVAILABLE_LLMS
 
-    # =============== 向后兼容的方法保持不变 ===============
-    # 这里可以保留原有的 chat_with_memory 等方法以保持向后兼容
+    # =============== 便捷方法 ===============
+
+    @classmethod
+    def quick_chat(cls,
+                   instance_id: str,
+                   user_message: str,
+                   model_name: str = "deepseek-chat",
+                   system_prompt_name: str = "default",
+                   create_if_not_exists: bool = True) -> str:
+        """
+        快速对话方法
+
+        Args:
+            instance_id: 实例ID
+            user_message: 用户消息
+            model_name: 模型名称（仅在创建新实例时使用）
+            system_prompt_name: 系统提示词名称
+            create_if_not_exists: 如果实例不存在是否自动创建
+
+        Returns:
+            str: AI 回复
+        """
+        instance = cls.get_instance(instance_id)
+
+        if not instance:
+            if create_if_not_exists:
+                instance = cls.create_instance(instance_id, model_name)
+            else:
+                raise ValueError(f"实例 {instance_id} 不存在")
+
+        return instance.chat(user_message, system_prompt_name)
+
+    @classmethod
+    async def quick_chat_stream(cls,
+                        instance_id: str,
+                        user_message: str,
+                        model_name: str = "deepseek-chat",
+                        system_prompt_name: str = "default",
+                        create_if_not_exists: bool = True) -> AsyncGenerator[str, None]:
+        """
+        快速流式对话 (异步版本)
+
+        Args:
+            instance_id: 实例ID
+            user_message: 用户消息
+            model_name: 模型名称
+            system_prompt_name: 系统提示词名称
+            create_if_not_exists: 如果实例不存在是否创建
+
+        Yields:
+            str: 每个内容块
+        """
+        try:
+            # 获取或创建实例
+            instance = cls.get_instance(instance_id)
+            if not instance and create_if_not_exists:
+                instance = cls.create_instance(
+                    instance_id=instance_id,
+                    model_name=model_name
+                )
+            elif not instance:
+                raise ValueError(f"实例不存在: {instance_id}")
+
+            # 使用实例进行流式对话
+            async for chunk in instance.chat_stream(user_message, system_prompt_name):
+                yield chunk
+
+        except Exception as e:
+            logger.error(f"快速流式对话失败: {e}", exc_info=True)
+            raise RuntimeError(f"快速流式对话失败: {e}")
+
+
+
+import asyncio
+
+async def main():
+    instance_id = "debug-stream"
+    model_name = "deepseek-chat"
+    user_message = "你好，请给我一个50字的科幻故事。"
+
+    # # 确保实例存在
+    # instance = LLMManager.get_instance(instance_id)
+    # if not instance:
+    #     instance = LLMManager.create_instance(instance_id=instance_id, model_name=model_name)
+    #
+    # print(">>> 开始流式输出：")
+    # async for chunk in instance.chat_stream(user_message):
+    #     print(chunk, end="", flush=True)  # 模拟流式输出
+    print(">>> quick_chat_stream 流式输出测试：")
+    async for chunk in LLMManager.quick_chat_stream(
+            instance_id=instance_id,
+            user_message=user_message,
+            model_name=model_name,
+            system_prompt_name="default",
+            create_if_not_exists=True
+    ):
+        print(chunk, end="", flush=True)  # 模拟前端实时显示
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

@@ -10,6 +10,7 @@ from langchain.tools import Tool
 from langchain_community.utilities.serpapi import SerpAPIWrapper
 from langchain_community.utilities.tavily_search import TavilySearchAPIWrapper
 from langchain_community.utilities.wikipedia import WikipediaAPIWrapper
+from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain_community.tools import DuckDuckGoSearchRun, WikipediaQueryRun
 from langchain_experimental.tools import PythonREPLTool
 from langchain_community.tools.openweathermap import OpenWeatherMapQueryRun
@@ -146,22 +147,152 @@ class ToolManager:
             logger.error(f"  ✗ DuckDuckGoSearch 工具初始化失败: {e}")
 
     @classmethod
+    @classmethod
     def _initialize_python_repl(cls):
         """
         初始化 Python REPL 工具。
 
         这个工具允许 Agent 执行 Python 代码，对于数学计算、
         数据分析、图表生成等任务非常有用。
+
+        特别优化：
+        - 自动为未包含 print 的表达式添加 print 输出
+        - 提供友好的错误处理，避免 Agent 因空 Observation 而循环
         """
         try:
             tool_name = "PythonREPLTool"
 
-            # 创建 Python REPL 工具实例
-            python_repl = PythonREPLTool()
+            # 创建自定义的 Python REPL 工具实例
+            class SafePythonREPLTool(PythonREPLTool):
+                """
+                安全的 Python REPL 工具，确保总是有 Observation 输出。
+                """
+
+                def run(self, code: str, **kwargs) -> str:
+                    """
+                    执行 Python 代码并确保有输出结果。
+
+                    Args:
+                        code: 要执行的 Python 代码
+                        **kwargs: 其他参数（如 verbose, color 等），传递给父类
+
+                    Returns:
+                        执行结果或错误信息
+                    """
+                    try:
+                        # 清理代码，移除前后空白
+                        code = code.strip()
+                        if not code:
+                            return "ERROR: 代码为空，请提供有效的 Python 代码。"
+
+                        # 处理单行或多行代码
+                        processed_code = self._process_code_for_output(code)
+
+                        # 调用父类的 run 方法执行代码，传递所有额外参数
+                        result = super().run(processed_code, **kwargs)
+
+                        # 确保返回非空结果
+                        if not result or result.strip() == '':
+                            return "代码执行完成，但无输出结果。"
+
+                        return result
+
+                    except Exception as e:
+                        # 返回友好的错误信息，避免空 Observation
+                        error_msg = f"Python 代码执行错误: {str(e)}"
+                        logger.warning(f"PythonREPLTool 执行失败: {error_msg}")
+                        return error_msg
+
+                def _process_code_for_output(self, code: str) -> str:
+                    """
+                    处理代码以确保有输出。
+
+                    Args:
+                        code: 原始代码
+
+                    Returns:
+                        处理后的代码
+                    """
+                    # 处理单行分号分隔的代码
+                    if ';' in code and '\n' not in code:
+                        # 分号分隔的单行代码
+                        parts = code.split(';')
+                        last_part = parts[-1].strip()
+
+                        if last_part and not self._is_statement(last_part):
+                            # 最后一部分是表达式，添加 print
+                            if not last_part.startswith('print'):
+                                parts[-1] = f'print({last_part})'
+                            return '; '.join(parts)
+                        else:
+                            # 如果最后一部分是语句或为空，添加一个 print 来确保有输出
+                            return code + '; print("执行完成")'
+
+                    # 处理多行代码
+                    lines = code.split('\n')
+                    last_line = lines[-1].strip()
+
+                    if last_line and not self._is_statement(last_line):
+                        # 最后一行是表达式，添加 print
+                        if not last_line.startswith('print'):
+                            lines[-1] = f'print({last_line})'
+                    else:
+                        # 如果最后一行是语句或为空，添加一个 print 来确保有输出
+                        lines.append('print("执行完成")')
+
+                    return '\n'.join(lines)
+
+                def _is_statement(self, line: str) -> bool:
+                    """
+                    判断一行代码是否是语句（而非表达式）。
+
+                    语句包括：赋值、import、def、class、if、for、while、try、with 等
+                    表达式包括：变量名、函数调用、数学运算等
+
+                    Args:
+                        line: 代码行
+
+                    Returns:
+                        True 如果是语句，False 如果是表达式
+                    """
+                    line = line.strip()
+                    if not line:
+                        return True
+
+                    # 语句关键字列表
+                    statement_keywords = [
+                        'import', 'from', 'def', 'class', 'if', 'elif', 'else',
+                        'for', 'while', 'try', 'except', 'finally', 'with',
+                        'break', 'continue', 'pass', 'return', 'yield', 'raise',
+                        'assert', 'del', 'global', 'nonlocal', 'print('
+                    ]
+
+                    # 检查是否以语句关键字开头
+                    for keyword in statement_keywords:
+                        if line.startswith(keyword):
+                            return True
+
+                    # 检查是否是赋值语句（简单检查）
+                    if '=' in line and not line.startswith('=') and not any(
+                            op in line for op in ['==', '!=', '<=', '>=', '+=', '-=', '*=', '/=', '%=', '**=', '//=']):
+                        return True
+
+                    return False
+
+            # 创建工具实例
+            python_repl = SafePythonREPLTool()
             python_repl.name = tool_name
 
+            # 更新工具描述，提供使用提示
+            python_repl.description = (
+                "执行 Python 代码的工具。适用于数学计算、数据分析、图表生成等任务。"
+                "代码中的表达式会自动输出结果，无需手动添加 print()。"
+                "如果需要多个输出，请使用 print() 函数。"
+            )
+
             cls._initialized_tools[tool_name] = python_repl
-            logger.info(f"  ✓ {tool_name} 工具初始化成功。")
+            logger.info(f"  ✓ {tool_name} 工具初始化成功（已启用自动输出优化）。")
+
         except Exception as e:
             logger.error(f"  ✗ PythonREPLTool 工具初始化失败: {e}")
 
@@ -207,8 +338,11 @@ class ToolManager:
             if settings.OPENWEATHERMAP_API_KEY:
                 tool_name = "OpenWeatherMapTool"
 
+                # 创建 OpenWeatherMap API 包装器实例
+                api_wrapper = OpenWeatherMapAPIWrapper()
+
                 # 创建天气查询工具实例
-                weather_tool_run = OpenWeatherMapQueryRun()
+                weather_tool_run = OpenWeatherMapQueryRun(api_wrapper=api_wrapper)
 
                 # 包装成 LangChain Tool
                 cls._initialized_tools[tool_name] = Tool(

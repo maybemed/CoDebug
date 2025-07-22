@@ -59,9 +59,7 @@ class PromptManager:
 2. 优先提供准确和有用的信息
 3. 保持友好和专业的语调
 4. 如果需要使用工具来获取信息，请合理使用
-
-当前时间：{current_time}
-用户：{user_name}""",
+""",
                 description="默认系统提示词",
                 is_active=True
             ),
@@ -77,12 +75,25 @@ class PromptManager:
 
 让我们一起探索无限的可能性！
 
-当前时间：{current_time}
-用户：{user_name}""",
+""",
                 description="创意助手提示词",
                 is_active=True
             ),
-            "analytical": SystemPromptConfig(
+            "weather_query": SystemPromptConfig(
+                name="weather_query",
+                content="""你是一个辅助查询天气的AI助手。你擅长数据分析、信息搜集和信息总结。
+
+你的工作方式：
+1. 把我的天气查询翻译为英文，然后调用工具进行查询，最终将查询结果翻译成中文返回给我。
+2. 基于信息和数据进行搜集汇总
+3. 提供清晰的天气查询结果
+
+一定要牢记上述中英文的转换流程。
+
+""",
+                description="分析型助手提示词",
+                is_active=True
+            ),"analytical": SystemPromptConfig(
                 name="analytical",
                 content="""你是一个逻辑严谨、分析能力强的AI助手。你擅长数据分析、逻辑推理和系统性思考。
 
@@ -93,9 +104,10 @@ class PromptManager:
 4. 明确指出假设和限制条件
 
 让我们用理性和逻辑来解决问题。
-
-当前时间：{current_time}
-用户：{user_name}""",
+"""
+# 当前时间：{current_time}
+# 用户：{user_name}
+                ,
                 description="分析型助手提示词",
                 is_active=True
             )

@@ -4,7 +4,7 @@ from langchain_community.chat_models import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
 
 # 加载.env文件
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
 
 class LLMHelper:
     def __init__(self):

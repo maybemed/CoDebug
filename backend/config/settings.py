@@ -12,8 +12,20 @@ class Settings:
     DEEPSEEK_TEMPERATURE = float(os.getenv("DEEPSEEK_TEMPERATURE", 0.7))
 
     SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
-    TAVILY_API_KEY=""
-    OPENWEATHERMAP_API_KEY=""
+    TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+    OPENWEATHERMAP_API_KEY = os.getenv("OPENWEATHERMAP_API_KEY")
+    # 会话历史json文件保存路径，写死为相对路径
+    CHAT_HISTORY_JSON_PATH = "chat_history.json"
+
+
+    GAODE_API_KEY = os.getenv("AMAP_API_KEY")
+    NODES_AND_EDGES_API_KEY= os.getenv("GET_NODES_AND_EDGES_AGENTS_API_KEY")
+    HIGHLIGHT_NODES_API_KEY= os.getenv("HIGHLIGHT_NODES_API_KEY")
+
+    # 获取节点和边的agents的url
+    GET_NODES_AND_EDGES_AGENTS_URL = "http://localhost/v1/workflows/run"
+    # 后端运行url
+    BACKEND_RUN_URL = "http://192.168.1.105:8000"
     # 定义可用的 LLM 模型及其描述
     AVAILABLE_LLMS = {
         "gpt-4o-mini": {

@@ -1,3 +1,7 @@
+# @user: maybemed
+# @last_update: 2025-07-12 02:23:07 UTC
+# @version: knowledge_graph_api
+
 from fastapi import APIRouter
 import json
 from pathlib import Path
@@ -11,6 +15,7 @@ class KGRequest(BaseModel):
 
 @router.get("/")
 async def get_knowledge_graph():
+    """获取知识图谱三元组"""
     # 修正为绝对路径，确保无论工作目录如何都能找到文件
     base_dir = Path(__file__).resolve().parent.parent.parent
     triples_path = base_dir / "knowledge" / "triples.json"
@@ -22,5 +27,10 @@ async def get_knowledge_graph():
 
 @router.post("/extract")
 async def extract_kg(req: KGRequest):
-    triples = await rte_from_text(req.text)
-    return {"triples": triples} 
+    """从文本中提取三元组"""
+    try:
+        triples = await rte_from_text(req.text)
+        return {"triples": triples}
+    except Exception as e:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=500, detail="Failed to extract triples")

@@ -515,3 +515,10 @@ ImportError: Could not import dashscope python package. Please install it with `
 2025-07-11 20:06:58,952 - llm_agent_platform - INFO - llm_manager.py:149 - 共享历史 model_switching_session 模型切换: qwen-max -> glm-4-air
 2025-07-11 20:06:58,973 - llm_agent_platform - INFO - llm_manager.py:283 - 成功创建 LLM 实例: glm-4-air (temperature: 0.7, streaming: True)
 2025-07-11 20:07:14,194 - llm_agent_platform - INFO - llm_manager.py:555 - 共享对话 model_switching_session 流式完成，模型: glm-4-air
+2025-07-12 16:02:45,782 - llm_agent_platform - INFO - prompt_manager.py:119 - 从文件加载了 5 个自定义提示词。
+2025-07-12 16:02:45,782 - llm_agent_platform - INFO - prompt_manager.py:150 - 已设置默认系统提示词。
+2025-07-12 16:02:45,784 - llm_agent_platform - INFO - prompt_manager.py:47 - 提示词管理器初始化完成。
+2025-07-12 16:02:45,784 - llm_agent_platform - WARNING - prompt_manager.py:207 - 提示词 'current' 不存在，更新失败。
+2025-07-12 16:02:45,785 - llm_agent_platform - INFO - prompt_manager.py:141 - 提示词已保存到文件: prompts/system_prompts.json
+2025-07-12 16:02:45,785 - llm_agent_platform - INFO - prompt_manager.py:182 - 成功创建系统提示词: current
+2025-07-12 16:02:45,785 - llm_agent_platform - INFO - prompt_manager.py:289 - 成功设置当前系统提示词: current
