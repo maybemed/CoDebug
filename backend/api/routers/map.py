@@ -55,33 +55,9 @@ async def plan_route(req: RoutePlanRequest):
                 for pair in polyline.split(";"):
                     if pair:
                         lng, lat = pair.split(",")
-                        # 转为GPS坐标
-                        gps = manager.amap_to_gps(float(lng), float(lat))
-                        points.append([gps["lng"], gps["lat"]])
+                        points.append([float(lng), float(lat)])
             return RoutePlanResponse(points=points)
         else:
             raise HTTPException(status_code=500, detail="路线规划失败或无结果")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"路线规划异常: {e}")
-
-class ListCoordinatesRequest(BaseModel):
-    city: str
-    places: List[str]
-
-class ListCoordinatesResponse(BaseModel):
-    coordinates: List[Optional[dict]]  # [{"lng": float, "lat": float} or None]
-
-@router.post("/get_list_coordinates", response_model=ListCoordinatesResponse)
-async def get_list_coordinates(req: ListCoordinatesRequest):
-    try:
-        manager = MapManager()
-        coords = []
-        for place in req.places:
-            precise = manager.get_precise_location(req.city, place)
-            coord = manager.get_location_coordinates(precise)
-            if coord:
-                coord = manager.amap_to_gps(coord["lng"], coord["lat"])
-            coords.append(coord)
-        return ListCoordinatesResponse(coordinates=coords)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"批量获取经纬度异常: {e}")

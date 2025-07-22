@@ -136,37 +136,3 @@ class LLMConversationHistory:
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat()
         }
-
-    def to_serializable_dict(self) -> list:
-        """将当前会话历史转为可序列化的role/content结构（不含系统消息）"""
-        result = []
-        for msg in self.messages:
-            if isinstance(msg, HumanMessage):
-                result.append({"role": "user", "content": msg.content})
-            elif isinstance(msg, AIMessage):
-                result.append({"role": "assistant", "content": msg.content})
-            # 跳过SystemMessage
-        return result
-
-    @staticmethod
-    def save_all_sessions_to_json(instances: dict, file_path: str):
-        """保存所有会话历史到指定json文件，路径由settings.CHAT_HISTORY_JSON_PATH写死传入。"""
-        import json
-        all_history = {}
-        for instance_id, instance in instances.items():
-            # 只保留session_id前缀（去除模型名）作为会话key
-            session_id = instance_id.split("_")[0]
-            if session_id not in all_history:
-                all_history[session_id] = []
-            all_history[session_id].extend(instance.conversation.to_serializable_dict())
-        with open(file_path, "w", encoding="utf-8") as f:
-            json.dump(all_history, f, ensure_ascii=False, indent=2)
-
-    @staticmethod
-    def load_all_sessions_from_json(file_path: str) -> dict:
-        """从json文件加载所有会话历史，返回dict结构。"""
-        import json
-        if not os.path.exists(file_path):
-            return {}
-        with open(file_path, "r", encoding="utf-8") as f:
-            return json.load(f)
