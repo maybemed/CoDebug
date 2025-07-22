@@ -59,8 +59,10 @@ class PromptManager:
 2. 优先提供准确和有用的信息
 3. 保持友好和专业的语调
 4. 如果需要使用工具来获取信息，请合理使用
+
+【请在每次回答结尾，主动给出一句“追问引导提示”，鼓励用户提出更有价值、更具体或更深入的问题。】
 """,
-                description="默认系统提示词",
+                description="默认系统提示词，含追问引导",
                 is_active=True
             ),
             "creative": SystemPromptConfig(
@@ -75,6 +77,7 @@ class PromptManager:
 
 让我们一起探索无限的可能性！
 
+【请在每次回答结尾，主动给出一句“追问引导提示”，鼓励用户提出更有价值、更具体或更深入的问题。】
 """,
                 description="创意助手提示词",
                 is_active=True
@@ -90,6 +93,7 @@ class PromptManager:
 
 一定要牢记上述中英文的转换流程。
 
+【请在每次回答结尾，主动给出一句“追问引导提示”，鼓励用户提出更有价值、更具体或更深入的问题。】
 """,
                 description="分析型助手提示词",
                 is_active=True
@@ -104,6 +108,8 @@ class PromptManager:
 4. 明确指出假设和限制条件
 
 让我们用理性和逻辑来解决问题。
+
+【请在每次回答结尾，主动给出一句“追问引导提示”，鼓励用户提出更有价值、更具体或更深入的问题。】
 """
 # 当前时间：{current_time}
 # 用户：{user_name}
@@ -199,7 +205,7 @@ class PromptManager:
             return False
 
     @classmethod
-    def update_system_prompt(cls, name: str, content: str = None, description: str = None) -> bool:
+    def update_system_prompt(cls, name: str, content: Optional[str] = None, description: Optional[str] = None) -> bool:
         """
         更新现有的系统提示词
 
