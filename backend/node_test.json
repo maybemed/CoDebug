@@ -1,0 +1,26 @@
+[
+    {
+    "node_name": "故宫博物院",
+    "price": "60元",
+    "play_time": "3-4h",
+    "attractions": [
+    {
+    "item_name": "珍宝馆",
+    "item_price": "10",
+    "item_play_time": "1h"
+    
+         },
+         {
+           "item_name": "钟表馆",
+           "item_price": "10元",
+           "item_play_time": "1h"
+         }
+       ]
+     },
+     {
+       "node_name": "南锣鼓巷",
+       "price": 0,
+       "play_time": "2-3h",
+       "attractions": []
+     }
+]

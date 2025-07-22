@@ -4,7 +4,7 @@ from typing import Optional, List, Dict, Any
 from backend.core.llm.llm_manager import LLMManager
 from backend.utils.logger import logger
 from fastapi import Response
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, JSONResponse
 import json
 import logging
 
@@ -29,6 +29,7 @@ class ChatRequest(BaseModel):
     temperature: Optional[float] = 0.7
     max_messages: Optional[int] = 50
     max_tokens: Optional[int] = 4000
+    # history_file_path: Optional[str] = None  # 移除
 
 
 class ChatResponse(BaseModel):
@@ -112,6 +113,7 @@ async def get_available_models():
 
 @router.post("/qa/chat")
 async def chat_with_llm(request: ChatRequest):
+    from backend.config.settings import settings
     async def event_generator():
         try:
             # 验证模型是否可用
@@ -179,6 +181,9 @@ async def chat_with_llm(request: ChatRequest):
                     yield f"data: {json.dumps({'type': 'error', 'error': str(e)})}\n\n"
 
             yield f"data: {json.dumps({'type': 'end'})}\n\n"
+
+            # 在对话结束后保存所有会话历史到json
+            LLMManager.save_all_sessions_to_json()
 
         except Exception as e:
             logging.error(f"LLM对话失败: {e}")
@@ -299,6 +304,19 @@ async def get_session_instances(session_id: str = Path(..., description="会话I
             "status": "error",
             "error": f"Failed to get session instances: {str(e)}"
         }
+
+
+@router.get("/qa/chat-history")
+async def get_chat_history():
+    """获取 chat_history.json 的全部内容"""
+    try:
+        with open("chat_history.json", "r", encoding="utf-8") as f:
+            data = f.read()
+        # 直接返回原始内容（字符串），如果需要解析为json对象可用 json.loads(data)
+        return Response(content=data, media_type="application/json; charset=utf-8")
+    except Exception as e:
+        logger.error(f"读取 chat_history.json 失败: {e}")
+        raise HTTPException(status_code=500, detail="Failed to read chat_history.json")
 
 
 def _get_active_instance_for_session(session_id: str) -> Optional[str]:

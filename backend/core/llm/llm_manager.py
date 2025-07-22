@@ -59,6 +59,14 @@ class LLMInstance:
 
         logger.info(f"创建 LLM 实例: {instance_id} (模型: {model_name})")
 
+    # 在 LLMInstance 类中添加 build_cot_prompt 静态方法
+    @staticmethod
+    def build_cot_prompt(user_input: str) -> str:
+        return f"""请你一步步思考以下问题，分析其意图。给出的建议可以是分点回答的，但是你的思考过程请以一段话的形式给出：\n
+        问题：{user_input}\n\n
+        以下属于思考过程，请分步进行如下分析，并以一段话的形式返回思考过程：\n1. 用户想要达成什么目标？\n2. 用户是否提供了所有所需信息？\n3. 哪些部分需要假设或补充？\n
+        以下属于回答过程，可以分点给出答案：根据以上问题和思考给出具体的回应建议。\n"""
+        
     def chat(self, user_message: str, system_prompt_name: str = "default") -> str:
         """
         进行对话（非流式）
@@ -71,6 +79,8 @@ class LLMInstance:
             str: AI 回复
         """
         try:
+            # CoT 预处理
+            user_message = self.build_cot_prompt(user_message)
             # RAG 检索
             rag_engine = RAGEngine()
             rag_contexts = rag_engine.query(user_message, top_k=3)
@@ -96,6 +106,8 @@ class LLMInstance:
             self.updated_at = datetime.now()
 
             logger.info(f"实例 {self.instance_id} 完成对话")
+            # 新增：保存所有会话历史到json
+            LLMManager.save_all_sessions_to_json()
             return ai_reply
 
         except Exception as e:
@@ -115,6 +127,8 @@ class LLMInstance:
             str: 每个内容块
         """
         try:
+            # CoT 预处理
+            user_message = self.build_cot_prompt(user_message)
             # RAG 检索
             rag_engine = RAGEngine()
             rag_contexts = rag_engine.query(user_message, top_k=3)
@@ -151,6 +165,8 @@ class LLMInstance:
             self.updated_at = datetime.now()
 
             logger.info(f"实例 {self.instance_id} 完成流式对话，共计 {len(full_content)} 字符")
+            # 新增：保存所有会话历史到json
+            LLMManager.save_all_sessions_to_json()
 
         except Exception as e:
             logger.error(f"实例流式对话失败: {e}", exc_info=True)
@@ -534,6 +550,12 @@ class LLMManager:
     def get_available_models(cls) -> Dict[str, Any]:
         """获取可用的模型信息"""
         return settings.AVAILABLE_LLMS
+
+    @classmethod
+    def save_all_sessions_to_json(cls):
+        """保存所有会话历史到json文件，路径写死为settings.CHAT_HISTORY_JSON_PATH。"""
+        from backend.core.llm.llm_conversation_history import LLMConversationHistory
+        LLMConversationHistory.save_all_sessions_to_json(cls._llm_user_instances, settings.CHAT_HISTORY_JSON_PATH)
 
     # =============== 便捷方法 ===============
 
